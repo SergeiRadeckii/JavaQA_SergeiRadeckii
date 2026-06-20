@@ -29,4 +29,5 @@ jobs:
         run: javac src/ComparisonString.java
 
       - name: Run
-        run: java -cp src ComparisonString
+        run: |
+          printf "${{ github.event.inputs.stringA }}\n${{ github.event.inputs.stringB }}\n" | java -cp src ComparisonString
