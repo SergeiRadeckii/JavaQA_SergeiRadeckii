@@ -1,10 +1,16 @@
 name: Run Java Application
 
 on:
-  push:
-    branches: [ comparisonString ]   # или main, если хотите на другой ветке
-  pull_request:
-    branches: [ comparisonString ]
+  workflow_dispatch:
+    inputs:
+      stringA:
+        description: 'Первая строка'
+        required: true
+        default: 'hello'
+      stringB:
+        description: 'Вторая строка'
+        required: true
+        default: 'world'
 
 jobs:
   build:
@@ -23,5 +29,4 @@ jobs:
         run: javac src/ComparisonString.java
 
       - name: Run
-        run: |
-          printf "строкаA\nстрокаB\n" | java -cp src ComparisonString
+        run: java -cp src ComparisonString
