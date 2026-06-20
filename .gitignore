@@ -1,20 +1,12 @@
-cat > .gitignore <<'EOF'
-# macOS
-.DS_Store
-
 # IDE
 .idea/
 *.iml
 
-# build
+# Выходные файлы компиляции
 out/
 target/
-*.class
+bin/
 
-# user folders
-Applications/
-Desktop/
-Documents/
-Downloads/
-Library/
-EOF
+# Системные файлы
+.DS_Store
+Thumbs.db
