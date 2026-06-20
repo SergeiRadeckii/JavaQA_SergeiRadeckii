@@ -23,4 +23,5 @@ jobs:
         run: javac src/ComparisonString.java
 
       - name: Run
-        run: java -cp src ComparisonString
+        run: |
+          printf "строкаA\nстрокаB\n" | java -cp src ComparisonString
