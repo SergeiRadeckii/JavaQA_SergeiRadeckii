@@ -1,8 +1,16 @@
-name: Build and Run Java
+name: Build and Run Java (manual input)
 
 on:
-  push:
   workflow_dispatch:
+    inputs:
+      a:
+        description: 'Целое число a'
+        required: true
+        default: '5'
+      b:
+        description: 'Целое число b'
+        required: true
+        default: '3'
 
 jobs:
   build-and-run:
@@ -20,5 +28,7 @@ jobs:
       - name: Compile
         run: javac -d out src/Main.java
 
-      - name: Run
-        run: java -cp out Main
+      - name: Run with inputs
+        run: |
+          # подаём два числа в stdin (каждое с новой строки)
+          echo -e "${{ github.event.inputs.a }}\n${{ github.event.inputs.b }}" | java -cp out Main
